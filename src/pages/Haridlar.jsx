@@ -28,24 +28,26 @@ function Haridlar() {
     }
 
     function calculateTotal(dataArray) {
-        const totalPrice = dataArray.reduce((sum, item) => sum + item.narh, 0);
+        const totalPrice = dataArray.reduce((sum, item) => Number(sum) + Number(item.narh), 0);
+        localStorage.setItem("narh",totalPrice)
+        console.log(totalPrice)
         setTotal(totalPrice);
     }
 
     return (
         <div>
-            <div className="bg-gray-100 h-screen py-8">
+            <div className="bg-base-200 h-screen py-8">
                 <div className="container mx-auto px-4">
                     <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
-                    <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex items-center flex-col md:flex-row gap-4">
                         <div className="md:w-3/4">
-                            <div className="bg-white rounded-lg shadow-md p-6 mb-4 div-32">
+                            <div className="bg-base-200 rounded-lg shadow-md p-6 mb-4 div-32">
                                 <table className="w-full">
                                     <thead>
                                         <tr className='div-31'>
                                             <th className="text-left font-semibold">Product</th>
                                             <th className="text-left font-semibold">Price</th>
-                                            <th className="text-left font-semibold">Discount</th>
+                                            <th className="text-left font-semibold">Malumod</th>
                                             <th className="text-left font-semibold">Quantity</th>
                                             <th className="text-left font-semibold">Action</th>
                                         </tr>
@@ -60,7 +62,7 @@ function Haridlar() {
                                                     </div>
                                                 </td>
                                                 <td className="py-4">{item.narh}$</td>
-                                                <td className="py-4">{item.chegirma}</td>
+                                                <td className="py-4">{item.text}</td>
                                                 <td className="py-4">
                                                     <div className="flex items-center">
                                                         <button className="border rounded-md py-2 px-4 mr-2">-</button>
@@ -80,7 +82,7 @@ function Haridlar() {
                             </div>
                         </div>
                         <div className="md:w-1/4">
-                            <div className="bg-white rounded-lg shadow-md p-6">
+                            <div className="bg-base-200 rounded-lg shadow-md p-6">
                                 <h2 className="text-lg font-semibold mb-4">Summary</h2>
                                 {data.map((item) => (
                                     <div key={item.id} className="flex justify-between mb-2">

@@ -31,6 +31,8 @@ function Register() {
             console.log(data)
            if(data.id){
             navigate("/login")
+            console.log(data)
+            localStorage.setItem("user", JSON.stringify(data));
            } if(data.statusCode<=400){
             alert(data.message[0]);
            }
@@ -49,17 +51,17 @@ function Register() {
             </div>
             <h1 className='text-[20px] text-slate-950 font-[600]'>Nice to see you again</h1>
             <form className='form' action="">
-               <label className='text-[16px]' htmlFor="">Logo
-               <input ref={nameRef} type="text" placeholder="Type here" className="input input-bordered w-full " />
+               <label className='text-[16px]' htmlFor="">Name
+               <input ref={nameRef} type="text" placeholder="Name" className="input input-bordered w-full " />
                </label>
                <label className='text-[16px]' htmlFor="">Email
-               <input ref={emailRef} type="text" placeholder="Type here" className="input input-bordered w-full " />
+               <input ref={emailRef} type="email" placeholder="Email" className="input input-bordered w-full " />
                </label>
                <label className='text-[16px]' htmlFor="">Pasword
-               <input ref={parolRef} type="text" placeholder="Type here" className="input input-bordered w-full " />
+               <input ref={parolRef} type="password" placeholder="Password" className="input input-bordered w-full " />
                </label>
                <label className='text-[16px]' htmlFor="">Avatar
-               <input ref={avatarRef} type="text" placeholder="Type here" className="input input-bordered w-full " />
+               <input ref={avatarRef} type="text" placeholder="Avatar" className="input input-bordered w-full " />
                </label>
             </form>
              <button onClick={(e)=>{malumod(e)}} className='btn mt-10 w-full bg-sky-500'>sigin in</button>

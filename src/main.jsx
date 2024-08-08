@@ -14,7 +14,9 @@ const theme = createTheme({
     },
   },
 });
-
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.style.zoom = '90%';
+});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <GlobalContextProvider>

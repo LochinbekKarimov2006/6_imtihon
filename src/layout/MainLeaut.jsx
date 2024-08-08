@@ -3,10 +3,10 @@ import Navbar from '../components/Navbar'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 
-function MainLeaut() {
+function MainLeaut({haritlar}) {
   return (
   <>
-    <Navbar/>
+    <Navbar haritlar={haritlar}/>
     <Outlet/>
     <Footer/>
   </>

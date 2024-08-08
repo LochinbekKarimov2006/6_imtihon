@@ -81,10 +81,15 @@ function CartQoshish() {
             setImage4([...image4, image5]);
             setImage5("");
         }
+    } function habarlar(e123){
+            const existingData = localStorage.getItem("habar");
+            let data1212 = existingData ? JSON.parse(existingData) : [];
+            data1212.push(e123);
+            localStorage.setItem("habar", JSON.stringify(data1212));
     }
     return (
         <div className='div-2'>
-            <div className='div-3'>
+            <div className='div-3 bg-base-200'>
                 <div style={{ background: `url(${textColoe})`, backgroundColor: `${textColoe}`, color: `${textColoe2}`, fontWeight: `${textQalinligi}` }} className="bg-cover card bg-base-100 w-96 shadow-xl">
                     <figure>
                         <img src={image} alt="" />
@@ -93,13 +98,13 @@ function CartQoshish() {
                         <h2 style={{ fontSize: `${textCataligi}px` }} className="card-title">{name}</h2>
                         <p style={{ fontSize: `${textCataligi}px` }}>{text}</p>
                         <div className="card-actions">
-                            <p className='line-through' style={{ fontSize: `${textCataligi}px` }}>{narh}$</p>
+                            <p className='line-through' style={{ fontSize: `${textCataligi}px` }}>{narh}</p>
                             <p style={{ fontSize: `${textCataligi}px` }}>{chegirma}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style={{ background: `url(${textColoe})`, backgroundColor: `${textColoe}` }} className='bg-cover div-4'>
+            <div style={{ background: `url(${textColoe})`, backgroundColor: `${textColoe}` }} className='bg-base-200 bg-cover div-4'>
                 <div className='div-5'>
                     <button onClick={() => { setYashirish(true) }} className='text-[24px] w-full h-[46px] hover:bg-slate-400'>Input</button>
                     <button onClick={() => { setYashirish(false) }} className='text-[24px] w-full h-[46px] hover:bg-slate-400'>Sozlamalar</button>
@@ -122,11 +127,11 @@ function CartQoshish() {
                     <div className='div-6 div-7'>
                         <label htmlFor="">
                             Prise
-                            <input value={narh} onChange={(e) => { setNarh(e.target.value) }} required placeholder='Enters the pris' className='input input-bordered w-full' type="text" />
+                            <input value={narh} onChange={(e) => { setNarh(e.target.value) }} required placeholder='Enters the pris' className='input input-bordered w-full' type="number" />
                         </label>
                         <label htmlFor="">
                             Discount
-                            <input value={chegirma} onChange={(e) => { setChegirma(e.target.value) }} required placeholder='Enter the discount price' className='input input-bordered w-full' type="text" />
+                            <input value={chegirma} onChange={(e) => { setChegirma(e.target.value) }} required placeholder='Enter the discount price' className='input input-bordered w-full' type="number" />
                         </label>
                     </div>
                     <label className='' htmlFor="">Namme:
@@ -143,7 +148,7 @@ function CartQoshish() {
                 </form>}
                 {!yashirish && <div className='div-11 m-6'>
                     <label htmlFor="">
-                        yozuv hajmi
+                        Yozuv qalinligi
                         <input value={textQalinligi} onChange={(e) => { setTextQalinligi(e.target.value) }} type="range" min={0} max="900" className="range" step="100" />
                         <div className="flex w-full justify-between px-2 text-xs">
                             <span>0</span>
@@ -191,7 +196,7 @@ function CartQoshish() {
                         </div>
                     </div>
                     <div className='text-[20px]'>
-            <h1>Text rangi</h1>
+            <h1>Card orqasini rangi</h1>
            <div className='flex justify-between'>
            <button style={{ backgroundColor: '#000' }} onClick={()=>{setTextColor("#000")}} className='btn w-20 h-10'></button>
            <button style={{ backgroundColor: '#fff' }} onClick={()=>{setTextColor('#fff')}} className='btn w-20 h-10'></button>
@@ -217,7 +222,7 @@ function CartQoshish() {
            </div>
                     <div className='div-10'>
                         <button onClick={() => { setYashirish(true) }} className='btn'>Orqaga</button>
-                        <button onClick={(e) => { tayor(e) }} className='btn btn-info'>Enter</button>
+                        <button onClick={(e) => { tayor(e),habarlar("Siz yangi Card qoshtinggiz 😃😄") }} className='btn btn-info'>Enter</button>
                     </div>
                 </div>}
             </div>

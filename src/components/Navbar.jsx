@@ -1,8 +1,24 @@
-import React, { useEffect } from 'react'
+import { Garage } from '@mui/icons-material';
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { GlobalContext } from '../context/GlobalContext';
 // import Spline from '@splinetool/react-spline';
 
-function Navbar() {
+function Navbar({haritlar}) {
+  const [kl,lk]=useState()
+  useEffect(()=>{
+    lk(haritlar)
+
+  },[haritlar])
+  const user =JSON.parse(localStorage.getItem("user"))
+  const haridlarsoni = JSON.parse(localStorage.getItem("haridlarim"));
+  const harit =localStorage.getItem("narh")
+  let {state,setState}=useContext(GlobalContext)
+
+  function udalit(){
+    localStorage.setItem("login",false)
+    setState(false)
+  }
     function changeTheme(e) {
         const selectedTheme = e;
         document.documentElement.setAttribute('data-theme', selectedTheme);
@@ -36,11 +52,9 @@ function Navbar() {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/Cart_qoshish">Heart</NavLink></li>
-      <li><NavLink to="/contact">Contact</NavLink></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">Logo</a>
+    <NavLink to="/" className="btn btn-ghost text-xl">Logo</NavLink>
     <div className='w-10 h-10'>
     {/* <Spline  scene="https://prod.spline.design/HtNn-u7PNdXiAZNv/scene.splinecode" /> */}
     </div>
@@ -48,9 +62,6 @@ function Navbar() {
   <div className="navbar-center hidden  lg:flex"> 
     <ul className=" div-1 px-1">
       <li><NavLink className="text-gray-400 font-[500] linke" to="/">Home</NavLink></li>
-      <li><NavLink className="text-gray-400 font-[500] linke" to="/">Heart</NavLink></li>
-      <li><NavLink className="text-gray-400 font-[500] linke" to="/contact">Contact</NavLink></li>
-      <li><NavLink className="text-gray-400 font-[500] linke" to="/toliq">Contact</NavLink></li>
     </ul>
   </div>
  
@@ -101,7 +112,7 @@ function Navbar() {
     </NavLink>
 
     <button className="btn btn-ghost btn-circle">
-      <div className="indicator">
+      <NavLink to="/habarlar" className="indicator">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -115,7 +126,7 @@ function Navbar() {
             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
         </svg>
         <span className="badge badge-xs badge-primary indicator-item"></span>
-      </div>
+      </NavLink>
     </button>
 
     <div className="dropdown flex flex-col items-end">
@@ -133,15 +144,15 @@ function Navbar() {
               strokeWidth="2"
               d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          <span className="badge badge-sm indicator-item">8</span>
+          <span className="badge badge-sm indicator-item">{haridlarsoni? haridlarsoni.length:"0"}</span>
         </div>
       </div>
       <div
         tabIndex={0}
-        className="card card-compact dropdown-content bg-base-100 z-[50] mt-20 w-52 shadow">
+        className="card card-compact dropdown-content bg-base-100  z-[50] mt-20 w-72 h-30 shadow">
         <div className="card-body">
-          <span className="text-lg font-bold">8 Items</span>
-          <span className="text-info">Subtotal: $999</span>
+          <span className="text-lg font-bold">{haridlarsoni? haridlarsoni.length:"0"} Items</span>
+          <span className="text-info">Subtotal: ${harit}</span>
           <div className="card-actions">
             <NavLink to="/carzinca" className="btn btn-primary btn-block">View cart</NavLink>
           </div>
@@ -149,26 +160,25 @@ function Navbar() {
       </div>
     </div>
 
-    <div className="dropdown ">
+    <div className="dropdown flex flex-col items-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={user.avatar} />
         </div>
       </div>
-      {/* <ul
+      
+       <div
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul> */}
+        className=" dropdown-content bg-base-100 rounded-box z-[50] mt-20 w-60 h-25 shadow">
+        <div className="card-body">
+          <span className="text-lg font-bold">{user.name}</span>
+          <div className="card-actions">
+            <button onClick={()=>{udalit()}} to="/carzinca" className="btn btn-primary btn-block">Udalit accaund</button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

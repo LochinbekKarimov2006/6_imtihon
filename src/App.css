@@ -164,4 +164,19 @@ justify-content: space-between;
   max-height: 600px;
   overflow: auto;
 }
-
+.div-32{
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 60px auto;
+  border: 1px solid;
+  border-radius: 15px;
+}
+.text{
+  width: 90%;
+  margin: 20px auto;
+  border: 1px solid;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 20px;
+}

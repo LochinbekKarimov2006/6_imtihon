@@ -11,9 +11,18 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from './context/GlobalContext'
 import Register from './page/Register'
 import Haridlar from './pages/Haridlar'
+import Habarlarim from './pages/Habarlarim'
 function App() {
-  let [user,setUser]=useState(true)
+  let login=localStorage.getItem("login")
+  let [user,setUser]=useState(false)
   let {state,setState}=useContext(GlobalContext)
+  let [haritlar,setHaritlar]=useState(0)
+  function harit(e){
+  setHaritlar(haritlar+e)
+  }
+  useEffect(()=>{
+  setState(login)
+  },[login])
   useEffect(()=>{
     setUser(state)
   },[state])
@@ -21,8 +30,8 @@ function App() {
     {
       path:"/",
       element:
-      <ProtectRouter user={user}>
-        <MainLeaut/>
+      <ProtectRouter user={user} >
+        <MainLeaut haritlar={haritlar}/>
       </ProtectRouter>,
       children:[
         {
@@ -31,7 +40,7 @@ function App() {
         },
         {
           path:"/toliq",
-          element:<ToliqMalumod/>
+          element:<ToliqMalumod harit={harit}/>
         },
         {
           path:"/contact",
@@ -43,13 +52,17 @@ function App() {
         },
         {
           path:"/carzinca",
-          element:<Haridlar/>
+          element:<Haridlar />
+        },
+        {
+          path:"/habarlar",
+          element:<Habarlarim/>
         }
       ]
     },
     {
       path:"/login",
-      element:user?<Navigate to="/"/>:<Login user={setUser}/>
+      element:user?<Navigate to="/"/>:<Login />
     },
     {
       path:"/registor",

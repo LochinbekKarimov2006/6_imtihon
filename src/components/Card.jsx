@@ -13,16 +13,15 @@ function Card() {
     }
 
     function ToliqMalumod(e) {
-        console.log("salom");
         localStorage.setItem("datas", JSON.stringify(e));
         navigate('/toliq'); // Navigate to the desired route
     }
 
     return (
         <div className="div-12">
-            {data1 && data1.map((e) => (
+            {data1 && data1.map((e,id) => (
                 <div
-                    key={e.id}
+                    key={id}
                     onClick={() => ToliqMalumod(e)}
                     style={{
                         background: `url(${e.textColoe})`,
@@ -30,7 +29,7 @@ function Card() {
                         color: `${e.textColoe2}`,
                         fontWeight: `${e.textQalinligi}`
                     }}
-                    className="bg-cover card bg-base-100 w-96 shadow-xl div-13"
+                    className="bg-cover cursor-pointer card bg-base-100 w-96 shadow-xl div-13"
                 >
                     <figure>
                         <button

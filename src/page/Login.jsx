@@ -30,11 +30,10 @@ function Login() {
                 return;
             } 
             if (data.access_token) {
-                localStorage.setItem("user", JSON.stringify(data));
                 localStorage.setItem("token", data.accessToken);
                 navigate('/');
-                console.log("salom") // To'g'ri sahifaga yo'naltirish
                 setState(true);
+                localStorage.setItem("login",true)
             }
         })
         .catch((err) => {
@@ -54,10 +53,10 @@ function Login() {
                 <h1 className='text-[20px] text-slate-950 font-[600]'>Nice to see you again</h1>
                 <form className='form' onSubmit={handleLogin}>
                    <label htmlFor="username" className='text-[16px]'>Email
-                   <input id="username" ref={emailRef} type="email" placeholder="Type here" className="input input-bordered w-full " />
+                   <input id="username" ref={emailRef} type="email" placeholder="Email" className="input input-bordered w-full " />
                    </label>
                    <label htmlFor="password" className='text-[16px]'>Password
-                   <input id="password" ref={passwordRef} type="password" placeholder="Type here" className="input input-bordered w-full " />
+                   <input id="password" ref={passwordRef} type="password" placeholder="Paeeword" className="input input-bordered w-full " />
                    </label>
                    <button type="submit" className='btn w-full bg-sky-500'>Sign in</button>
                 </form>
