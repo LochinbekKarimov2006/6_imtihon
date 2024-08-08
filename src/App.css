@@ -172,6 +172,10 @@ justify-content: space-between;
   border: 1px solid;
   border-radius: 15px;
 }
+.div-22{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
 .text{
   width: 90%;
   margin: 20px auto;

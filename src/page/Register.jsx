@@ -79,7 +79,7 @@ function Register() {
             </div>
         </div>
         <div className='div-21'>
-            <img src="https://klev.club/uploads/posts/2023-10/1698721079_klev-club-p-kartinki-anime-devushka-i-paren-tseluyutsy-32.jpg" alt="" />
+            <img className='w-[100%] h-[100%]' src="https://i0.wp.com/www.thekampalareport.com/wp-content/uploads/2023/04/business-registration.jpg?fit=2560%2C1707&ssl=1" alt="" />
         </div>
     </div>
     </div>

@@ -43,8 +43,8 @@ function Login() {
 
     return (
         <div className='div-20 bg-base-200'>
-            <div className='div-21'>
-                <img src="https://klev.club/uploads/posts/2023-10/1698721079_klev-club-p-kartinki-anime-devushka-i-paren-tseluyutsy-32.jpg" alt="" />
+            <div className='div-22'>
+                <img className='w-[100%] h-[100%] div-22' src="https://ic.pics.livejournal.com/jewsejka/7887626/197706/197706_original.jpg" alt="" />
             </div>
             <div className='px-[48px] py-[30px] div-22'>
                 <div>
